@@ -106,6 +106,13 @@
           "target": [
             "Login"
           ]
+        },
+        {
+          "name": "Signup",
+          "pattern": "signup",
+          "target": [
+            "Signup"
+          ]
         }
       ],
       "targets": {
@@ -120,6 +127,12 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewName": "Login"
+        },
+        "Signup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Signup"
         }
       }
     },

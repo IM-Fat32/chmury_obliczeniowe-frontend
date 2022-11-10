@@ -1,35 +1,29 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "./BaseController"
 ],
     /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
+     * @param {typeof sap.ui.core.mvc.Controller} BaseController
      */
-    function (Controller) {
+    function (BaseController) {
         "use strict";
 
-        return Controller.extend("chm.obl.chmuryobliczeniowe.controller.Main", {
+        return BaseController.extend("chm.obl.chmuryobliczeniowe.controller.Main", {
             onInit: function () {
 
             },
 
             onAvatarPress: function(event) {
-                const avatar = event.getSource();
-                const actionSheet = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.UserActions", this);
-                actionSheet.openBy(avatar);
+                const oAvatar = event.getSource();
+                const oActionSheet = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.UserActions", this);
+                oActionSheet.openBy(oAvatar);
             },
 
             onLogin: function() {
                 this.getOwnerComponent().getRouter().navTo("Login");
             },
 
-            onOpenDialog: function() {
-                const dialog = new sap.m.Dialog({
-                    content: [
-                        new sap.m.Text({text: "text"})
-                    ]
-                });
-                
-                dialog.open();
-            }
+            onSignup: function() {
+                this.getOwnerComponent().getRouter().navTo("Signup");
+            },
         });
     });
