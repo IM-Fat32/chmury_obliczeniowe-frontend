@@ -46,7 +46,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.102.1",
+      "minUI5Version": "1.107.0",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -94,28 +94,39 @@
       },
       "routes": [
         {
-          "name": "RouteMain",
-          "pattern": ":?query:",
+          "name": "Main",
+          "pattern": "",
           "target": [
-            "TargetMain"
+            "Main"
+          ]
+        },
+        {
+          "name": "Login",
+          "pattern": "login",
+          "target": [
+            "Login"
           ]
         }
       ],
       "targets": {
-        "TargetMain": {
+        "Main": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "Main",
           "viewName": "Main"
+        },
+        "Login": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Login"
         }
       }
     },
     "rootView": {
       "viewName": "chm.obl.chmuryobliczeniowe.view.App",
       "type": "XML",
-      "async": true,
-      "id": "App"
+      "async": true
     }
   }
 }

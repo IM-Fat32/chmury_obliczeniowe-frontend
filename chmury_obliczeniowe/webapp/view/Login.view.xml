@@ -1,0 +1,9 @@
+<mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Login" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page title="{i18n>title}" showHeader="false">
+        <content>
+             <HBox justifyContent="End" width="100%">
+                <Text text="login view"/>
+            </HBox>
+        </content>
+    </Page>
+</mvc:View>

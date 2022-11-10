@@ -12,14 +12,24 @@ sap.ui.define([
 
             },
 
+            onAvatarPress: function(event) {
+                const avatar = event.getSource();
+                const actionSheet = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.UserActions", this);
+                actionSheet.openBy(avatar);
+            },
+
+            onLogin: function() {
+                this.getOwnerComponent().getRouter().navTo("Login");
+            },
+
             onOpenDialog: function() {
-                const oDialog = new sap.m.Dialog({
+                const dialog = new sap.m.Dialog({
                     content: [
                         new sap.m.Text({text: "text"})
                     ]
                 });
                 
-                oDialog.open();
+                dialog.open();
             }
         });
     });
