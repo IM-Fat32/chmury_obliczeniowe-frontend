@@ -10,6 +10,16 @@ sap.ui.define([
         return Controller.extend("chm.obl.chmuryobliczeniowe.controller.Main", {
             onInit: function () {
 
+            },
+
+            onOpenDialog: function() {
+                const oDialog = new sap.m.Dialog({
+                    content: [
+                        new sap.m.Text({text: "text"})
+                    ]
+                });
+                
+                oDialog.open();
             }
         });
     });

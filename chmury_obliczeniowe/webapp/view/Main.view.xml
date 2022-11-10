@@ -1,9 +1,7 @@
-<mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+<mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page title="{i18n>title}">
         <content>
-    <Text text="Test"></Text>
+            <Button press="onOpenDialog" text="Open dialog"/>
         </content>
     </Page>
 </mvc:View>
