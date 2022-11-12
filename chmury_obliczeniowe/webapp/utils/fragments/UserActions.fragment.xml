@@ -2,8 +2,8 @@
     <Popover placement="Bottom" showHeader="false">
         <List>
             <items>
-                <StandardListItem title="Log in" type="Active" press="onLogin"/>
-                <StandardListItem title="Sign up" type="Active" press="onSignup"/>
+                <StandardListItem title="Log in" type="Active" press="onLogin" />
+                <StandardListItem title="Sign up" type="Active" press="onSignup" />
             </items>
         </List>
     </Popover>

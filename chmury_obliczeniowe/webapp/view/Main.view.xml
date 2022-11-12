@@ -1,8 +1,8 @@
 <mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page title="{i18n>title}" showHeader="false">
         <content>
-             <HBox justifyContent="End" width="100%">
-                <Avatar src="{/Speakers}" displaySize="S" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
+             <HBox justifyContent="End" width="100%" id="avatar--container">
+                <Avatar displaySize="S" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
             </HBox>
         </content>
     </Page>

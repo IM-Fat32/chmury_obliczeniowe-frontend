@@ -7,7 +7,7 @@ sap.ui.define([
     function (BaseController) {
         "use strict";
 
-        return BaseController.extend("chm.obl.chmuryobliczeniowe.controller.Main", {
+        return BaseController.extend("chm.obl.chmuryobliczeniowe.controller.Signup", {
             onInit: function () {
 
             },

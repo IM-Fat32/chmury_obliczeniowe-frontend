@@ -21,7 +21,7 @@ sap.ui.define([
                     window.history.go(-1);
                     return;
                 }
-                this.getOwnerComponent().getRouter().navTo("Main", {}, true /*no history*/);
+                this.getOwnerComponent().getRouter().navTo("Main" /*no history*/);
             }
 
         });

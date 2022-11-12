@@ -1,9 +1,8 @@
 <mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Signup" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page title="{i18n>title}" showHeader="false">
         <content>
-             <HBox justifyContent="SpaceBetween" width="100%" class="tiny-padding">
-                <Button icon="sap-icon://nav-back" press="onNavBack"/>
-                <Text text="Sign up view"/>
+            <HBox justifyContent="SpaceBetween" width="100%" class="tiny-padding">
+                <Button icon="sap-icon://nav-back" press="onNavBack" />
             </HBox>
         </content>
     </Page>

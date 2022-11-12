@@ -69,6 +69,9 @@
           "bundleName": "chm.obl.chmuryobliczeniowe.i18n.i18n"
         }
       },
+      "loginViewModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,
