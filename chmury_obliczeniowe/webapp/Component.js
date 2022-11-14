@@ -3,11 +3,12 @@
  */
 
 sap.ui.define([
-        "sap/ui/core/UIComponent",
-        "sap/ui/Device",
-        "chm/obl/chmuryobliczeniowe/model/models"
-    ],
-    function (UIComponent, Device, models) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/Device",
+    "chm/obl/chmuryobliczeniowe/model/models",
+    "./firebase"
+],
+    function (UIComponent, Device, models, Firebase) {
         "use strict";
 
         return UIComponent.extend("chm.obl.chmuryobliczeniowe.Component", {
@@ -29,6 +30,9 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                //set the firebase model
+                this.setModel(Firebase.initializeFirebase(), "firebase");
             }
         });
     }

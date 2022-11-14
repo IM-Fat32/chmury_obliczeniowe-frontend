@@ -1,21 +1,20 @@
 <mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Login" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page title="{i18n>title}" showHeader="false">
         <content>
-            <HBox justifyContent="SpaceBetween" width="100%" class="tiny-padding" height="10%">
-                <Button icon="sap-icon://nav-back" press="onNavBack" />
-            </HBox>
             <HBox justifyContent="Center" alignItems="Center" width="100%" height="90%">
                 <VBox class="login-dialog--container">
+                    <Title width="100%" textAlign="Center" text="{i18n>loginTitle}" class="sapUiSmallMarginBottom" />
                     <VBox class="sapUiSmallMarginBottom">
                         <Label text="{i18n>userName}" />
-                        <Input valueLiveUpdate="true" liveChange="onLoginValueChange" fieldGroupIds="isLoginFilled" value="{loginViewModel>/userLogin}" />
+                        <Input id="login-email--input" type="Email" valueLiveUpdate="true" liveChange="onCharChange" change="onEmailValueChange" fieldGroupIds="isLoginFilled" value="{loginViewModel>/userLogin}" />
                     </VBox>
                     <VBox class="sapUiSmallMarginBottom">
                         <Label text="{i18n>userPassword}" />
-                        <Input type="Password" valueLiveUpdate="true" liveChange="onLoginValueChange" fieldGroupIds="isPasswordFilled" value="{loginViewModel>/userPawssword}" />
+                        <Input id="login-password--input" type="Password" valueLiveUpdate="true" liveChange="onCharChange" fieldGroupIds="isPasswordFilled" value="{loginViewModel>/userPassword}" showValueHelp="true" valueHelpIconSrc="sap-icon://show" />
                     </VBox>
-                    <HBox width="100%" justifyContent="End">
-                        <Button text="{i18n>login}" type="Emphasized" enabled="{= ${loginViewModel>/isLoginFilled} &amp;&amp; ${loginViewModel>/isPasswordFilled} ? true : false}" />
+                    <HBox width="100%" justifyContent="SpaceBetween" alignItems="Center">
+                        <Link text="{i18n>signup}" press="onRegister" />
+                        <Button text="{i18n>login}" type="Emphasized" enabled="{= ${loginViewModel>/isLoginFilled} &amp;&amp; ${loginViewModel>/isPasswordFilled} &amp;&amp; ${loginViewModel>/isEmailValid}? true : false}" press="onLoginPress"/>
                     </HBox>
                 </VBox>
             </HBox>

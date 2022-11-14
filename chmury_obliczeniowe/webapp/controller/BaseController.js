@@ -22,7 +22,29 @@ sap.ui.define([
                     return;
                 }
                 this.getOwnerComponent().getRouter().navTo("Main" /*no history*/);
-            }
+            },
 
+            getI18nText: function(sTextName) {
+                return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextName);
+            },
+
+            onShowPassword: function (oEvent) {
+                const oInput = oEvent.getSource();
+                if (oInput.getType() === "Password") {
+                    oInput.setType("Text");
+                    return;
+                }
+                oInput.setType("Password");
+            },
+
+            setShowPasswordEvents: function (oEventControl) {
+                oEventControl._getValueHelpIcon().attachBrowserEvent("mousedown", function (oEventControl) {
+                    oEventControl.setType("Text");
+                }.bind(this, oEventControl));
+
+                oEventControl._getValueHelpIcon().attachBrowserEvent("mouseup mouseleave", function (oEventControl) {
+                    oEventControl.setType("Password");
+                }.bind(this, oEventControl));
+            }
         });
     });

@@ -2,7 +2,9 @@ sap.ui.define([], function () {
     "use strict";
     return {
         _models: {
-            loginViewModel: "loginViewModel"
+            loginViewModel: "loginViewModel",
+            signupViewModel: "signupViewModel",
+            authModel: "authModel",
         },
 
         getModels: function () {
