@@ -24,7 +24,7 @@ sap.ui.define([
                 this.getOwnerComponent().getRouter().navTo("Main" /*no history*/);
             },
 
-            getI18nText: function(sTextName) {
+            getI18nText: function (sTextName) {
                 return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextName);
             },
 
@@ -45,6 +45,30 @@ sap.ui.define([
                 oEventControl._getValueHelpIcon().attachBrowserEvent("mouseup mouseleave", function (oEventControl) {
                     oEventControl.setType("Password");
                 }.bind(this, oEventControl));
-            }
+            },
+
+            onCloseDialog: function (oEvent) {
+                oEvent.getSource().getParent().close();
+            },
+
+            onAvatarPress: function (oEvent) {
+                const oAvatar = oEvent.getSource();
+                const oActionSheet = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.UserActions", this);
+                this.getView().addDependent(oActionSheet);
+                oActionSheet.openBy(oAvatar);
+            },
+
+            onLogout: function () {
+                BusyDialog.open(this, "logoutAction");
+                firebase.auth().signOut().then(() => {
+                    this._setLoggedUserData();
+                    BusyDialog.close(this);
+                    this.getOwnerComponent().getRouter().navTo("Login");
+                }).catch((oError) => {
+                    BusyDialog.close(this);
+                    ErrorDialog.open(this, oError.message);
+                });
+            },
+
         });
     });

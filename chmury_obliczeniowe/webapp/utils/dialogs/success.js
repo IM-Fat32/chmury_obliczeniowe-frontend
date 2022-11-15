@@ -1,20 +1,22 @@
 sap.ui.define([
-    "../custom/customProperties"
+    "../custom/customProperties",
+    "./dialog",
 ], function (
-    CustomProperties
+    CustomProperties,
+    Dialog
 ) {
     "use strict";
     return {
-        open: function (sMessage, fnCallback) {
-            if (fnCallback === undefined || fnCallback === null) {
-                sap.m.MessageBox.success(sMessage);
-                return;
-            }
-            sap.m.MessageBox.success(sMessage, {
-                onClose: function () {
-                    fnCallback();
-				}
-            });
-        }
+        open: function (oController, sMessage, fnCallback) {
+            CustomProperties.addCustomProperties(this, [{
+                name: "successDialog", value: Dialog.getDialog(oController, "Success", sMessage,
+                    function () {
+                        this.getSuccessDialog().close();
+                        fnCallback();
+                    }.bind(this))
+            }], false);
+
+            this.getSuccessDialog().open();
+        },
     };
 });

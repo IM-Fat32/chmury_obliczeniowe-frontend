@@ -1,8 +1,12 @@
 <mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page title="{i18n>title}" showHeader="false">
         <content>
-             <HBox justifyContent="End" width="100%" id="avatar--container">
-                <Avatar displaySize="S" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
+            <HBox justifyContent="End" alignItems="Center" width="100%" id="avatar--container">
+                <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
+            </HBox>
+            <HBox>
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>clients}" press="onOpenClientsView" frameType="OneByHalf"/>
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>repairs}" press="onPress" frameType="OneByHalf"/>
             </HBox>
         </content>
     </Page>

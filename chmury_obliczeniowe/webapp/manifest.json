@@ -78,6 +78,9 @@
       "authModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
+      "clientsModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -144,6 +147,13 @@
           "target": [
             "Signup"
           ]
+        },
+        {
+          "name": "Clients",
+          "pattern": "Clients",
+          "target": [
+            "Clients"
+          ]
         }
       ],
       "targets": {
@@ -164,6 +174,12 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewName": "Signup"
+        },
+        "Clients": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Clients"
         }
       }
     },

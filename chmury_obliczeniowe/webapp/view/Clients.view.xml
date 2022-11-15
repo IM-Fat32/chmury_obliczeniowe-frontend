@@ -1,0 +1,53 @@
+<mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Clients" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page title="{i18n>title}" showHeader="false">
+        <content>
+            <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" id="avatar--container">
+                <HBox width="100%" class="sapUiTinyMarginBegin">
+                    <Button icon="sap-icon://nav-back" press="onNavBack" class="sapUiSmallMarginEnd" />
+                    <Button text="{i18n>newClient}" press="onCreateClientDialogOpen" icon="sap-icon://add-employee" />
+                </HBox>
+                <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
+            </HBox>
+
+            <Table headerText="{i18n>clientsList}" class="sapUiSmallMarginTop" backgroundDesign="Solid" items="{clientsModel>/tableData}" alternateRowColors="true">
+                <columns>
+                    <Column>
+                        <Text text="{i18n>surname}" />
+                    </Column>
+                    <Column popinDisplay="Inline" hAlign="Center">
+                        <Text text="{i18n>name}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline">
+                        <Text text="{i18n>city}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+                        <Text text="{i18n>street}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+                        <Text text="{i18n>houseNumber}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
+                        <Text text="{i18n>postalCode}" />
+                    </Column>
+                    <Column hAlign="End" width="6rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{clientsModel>surname}" />
+                            <Text text="{clientsModel>name}" />
+                            <Text text="{clientsModel>city}" />
+                            <Text text="{clientsModel>street}" />
+                            <Text text="{clientsModel>houseNumber}" />
+                            <Text text="{clientsModel>postalCode}" />
+                            <HBox justifyContent="SpaceAround">
+                                <Button icon="sap-icon://edit" press="onEditClientDialogOpen" />
+                                <Button icon="sap-icon://delete" type="Reject" press="onDeleteClient" />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

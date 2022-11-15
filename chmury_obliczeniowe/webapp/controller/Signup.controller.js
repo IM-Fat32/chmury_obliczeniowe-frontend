@@ -65,10 +65,10 @@ sap.ui.define([
                 BusyDialog.open(this, "creatingAccount");
                 firebase.auth().createUserWithEmailAndPassword(sEmail, sPassword).then((userCredential) => {
                     BusyDialog.close(this);
-                    SuccessDialog.open(this.getI18nText("accountCreated"), function () { this.getOwnerComponent().getRouter().navTo("Login") }.bind(this));
+                    SuccessDialog.open(this, this.getI18nText("accountCreated"), function () { this.getOwnerComponent().getRouter().navTo("Login") }.bind(this));
                 }).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(oError.message);
+                    ErrorDialog.open(this, oError.message);
                 });
             },
 
