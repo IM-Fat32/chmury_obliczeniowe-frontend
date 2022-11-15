@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-    <Dialog title="{i18n>createClient}" contentWidth="300px" titleAlignment="Center">
+    <Dialog title="{i18n>createClient}" contentWidth="450px" titleAlignment="Center">
         <content>
             <VBox class="sapUiSmallMargin">
                 <Label text="{i18n>name}:" />
