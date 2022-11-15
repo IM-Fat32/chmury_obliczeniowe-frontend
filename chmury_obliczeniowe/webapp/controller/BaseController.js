@@ -1,11 +1,16 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
+    "../utils/dialogs/busy",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, History) {
+    function (
+        Controller,
+        History,
+        BusyDialog
+    ) {
         "use strict";
 
         return Controller.extend("chm.obl.chmuryobliczeniowe.controller.BaseController", {

@@ -154,6 +154,20 @@
           "target": [
             "Clients"
           ]
+        },
+        {
+          "name": "Services",
+          "pattern": "Services",
+          "target": [
+            "Services"
+          ]
+        },
+        {
+          "name": "Devices",
+          "pattern": "Devices",
+          "target": [
+            "Devices"
+          ]
         }
       ],
       "targets": {
@@ -180,6 +194,18 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewName": "Clients"
+        },
+        "Services": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Services"
+        },
+        "Devices": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Devices"
         }
       }
     },

@@ -1,0 +1,13 @@
+<mvc:View controllerName="chm.obl.chmuryobliczeniowe.controller.Services" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page title="{i18n>title}" showHeader="false">
+        <content>
+            <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" id="avatar--container">
+                <HBox width="100%" class="sapUiTinyMarginBegin">
+                    <Button icon="sap-icon://nav-back" press="onNavBack" class="sapUiSmallMarginEnd" />
+                    <Button text="{i18n>newRepeirment}" press="onCreateClientDialogOpen" icon="sap-icon://create" />
+                </HBox>
+                <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
+            </HBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -23,6 +23,14 @@ sap.ui.define([
                 this.getOwnerComponent().getRouter().navTo("Clients");
             },
 
+            onOpenServicesView: function() {
+                this.getOwnerComponent().getRouter().navTo("Services");
+            },
+
+            onOpenDevicesView: function() {
+                this.getOwnerComponent().getRouter().navTo("Devices");
+            },
+
             _onPatternMatched: function () {
                 const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
 
