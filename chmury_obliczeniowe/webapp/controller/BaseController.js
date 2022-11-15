@@ -2,6 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "../utils/dialogs/busy",
+    "../utils/dialogs/error",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -9,7 +10,8 @@ sap.ui.define([
     function (
         Controller,
         History,
-        BusyDialog
+        BusyDialog,
+        ErrorDialog
     ) {
         "use strict";
 

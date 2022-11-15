@@ -24,8 +24,6 @@ sap.ui.define([
             init: function () {
                 // call the base component's init function
                 UIComponent.prototype.init.apply(this, arguments);
-                sap.ui.Device.system.phone = false;
-                sap.ui.Device.system.desktop = true;
                 // enable routing
                 this.getRouter().initialize();
 
