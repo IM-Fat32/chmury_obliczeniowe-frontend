@@ -6,6 +6,8 @@ sap.ui.define([], function () {
             signupViewModel: "signupViewModel",
             authModel: "authModel",
             clientsModel: "clientsModel",
+            devicesModel: "devicesModel",
+            searchHelpsModel: "searchHelpsModel",
         },
 
         getModels: function () {

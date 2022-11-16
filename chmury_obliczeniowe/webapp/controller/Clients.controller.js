@@ -24,8 +24,9 @@ sap.ui.define([
             onCreateClientDialogOpen: function () {
                 const oClientsDataModel = this.getOwnerComponent().getModel(NAMES.getModels().clientsModel);
                 const oCreateClientDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.AddNewClient", this);
+                
                 CustomProperties.addCustomProperties(this, [{ name: "createClientDialog", value: oCreateClientDialog }], false);
-
+                oCreateClientDialog.setTitle(this.getI18nText("createClient"));
                 oClientsDataModel.setProperty("/newClient", {
                     isCreateEnabled: false,
                     isEditMode: false,
@@ -46,8 +47,9 @@ sap.ui.define([
                 const oCreateClientDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.AddNewClient", this);
                 const sRowDataBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().clientsModel);
                 const oRowData = oClientsDataModel.getProperty(sRowDataBindingPath);
+                
+                oCreateClientDialog.setTitle(this.getI18nText("editClient"));
                 CustomProperties.addCustomProperties(this, [{ name: "createClientDialog", value: oCreateClientDialog }], false);
-
                 oClientsDataModel.setProperty("/newClient", {
                     isCreateEnabled: true,
                     isEditMode: true,

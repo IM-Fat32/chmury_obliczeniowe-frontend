@@ -4,10 +4,57 @@
             <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" id="avatar--container">
                 <HBox width="100%" class="sapUiTinyMarginBegin">
                     <Button icon="sap-icon://nav-back" press="onNavBack" class="sapUiSmallMarginEnd" />
-                    <Button text="{i18n>newDevice}" press="onCreateClientDialogOpen" icon="sap-icon://laptop" />
+                    <Button text="{i18n>newDevice}" press="onCreateDeviceDialogOpen" icon="sap-icon://laptop" />
                 </HBox>
                 <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
             </HBox>
+            <Table headerText="{i18n>devicesList}" class="sapUiSmallMarginTop" backgroundDesign="Solid" items="{devicesModel>/tableData}" alternateRowColors="true">
+                <columns>
+                    <Column>
+                        <Text text="{i18n>brand}" />
+                    </Column>
+                    <Column popinDisplay="Inline" hAlign="Center">
+                        <Text text="{i18n>guarantee}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline">
+                        <Text text="{i18n>service}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+                        <Text text="{i18n>model}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+                        <Text text="{i18n>price}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
+                        <Text text="{i18n>processor}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
+                        <Text text="{i18n>ram}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
+                        <Text text="{i18n>system}" />
+                    </Column>
+                    <Column hAlign="End" width="6rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{devicesModel>brand}" />
+                            <CheckBox selected="{devicesModel>guarantee}" editable="false"/>
+                            <CheckBox selected="{devicesModel>isInService}" editable="false" />
+                            <Text text="{devicesModel>model}" />
+                            <ObjectNumber number="{devicesModel>price}" unit="zł"/>
+                            <Text text="{devicesModel>processor}" />
+                            <Text text="{devicesModel>ram}" />
+                            <Text text="{devicesModel>system}" />
+                            <HBox justifyContent="SpaceAround">
+                                <Button icon="sap-icon://edit" press="onEditClientDialogOpen" />
+                                <Button icon="sap-icon://delete" type="Reject" press="onDeleteClient" />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
         </content>
     </Page>
 </mvc:View>

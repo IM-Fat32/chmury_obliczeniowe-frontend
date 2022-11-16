@@ -1,0 +1,5 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core">
+    <SelectDialog contentWidth="600px" contentHeight="400px" title="{i18n>clientSeachHelpTitle}" search="onSearch" confirm="onDialogConfirm" cancel="onDialogClose" items="{path: 'searchHelpsModel>/clientsShData'}">
+        <StandardListItem info="{searchHelpsModel>id}" title="{searchHelpsModel>name} {searchHelpsModel>surname}" description="{searchHelpsModel>postalCode} {searchHelpsModel>city} {searchHelpsModel>houseNumber}" />
+    </SelectDialog>
+</c:FragmentDefinition>

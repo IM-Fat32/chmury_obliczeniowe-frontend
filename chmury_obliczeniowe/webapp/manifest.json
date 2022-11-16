@@ -81,6 +81,12 @@
       "clientsModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
+      "devicesModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "searchHelpsModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,
