@@ -32,6 +32,7 @@ sap.ui.define([
             const oItemData = oSearchHelpsModel.getProperty(sBindingPath);
 
             oDevicesDataModel.setProperty(this.getInput().getBinding("selectedKey").getPath(), oItemData.id);
+            this.getController().onValueChange();
         },
 
         getSHData: function (oController) {
@@ -60,7 +61,7 @@ sap.ui.define([
             ).catch((oError) => {
                 if (oController === null)
                     this.getShDialog().setBusy(false);
-                ErrorDialog.open(this, this.getI18nText("loadingClientsDataError"));
+                ErrorDialog.open(this, this.getI18nText("loadingDataError"));
             });
         }
     };

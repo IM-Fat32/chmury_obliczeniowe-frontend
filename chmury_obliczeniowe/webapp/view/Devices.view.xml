@@ -31,8 +31,11 @@
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
                         <Text text="{i18n>ram}" />
                     </Column>
-                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
                         <Text text="{i18n>system}" />
+                    </Column>
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
+                        <Text text="{i18n>clientName}" />
                     </Column>
                     <Column hAlign="End" width="6rem" />
                 </columns>
@@ -40,13 +43,14 @@
                     <ColumnListItem vAlign="Middle">
                         <cells>
                             <Text text="{devicesModel>brand}" />
-                            <CheckBox selected="{devicesModel>guarantee}" editable="false"/>
-                            <CheckBox selected="{devicesModel>isInService}" editable="false" />
+                            <CheckBox selected="{devicesModel>guarantee}" enabled="false"/>
+                            <CheckBox selected="{devicesModel>isInService}" enabled="false" />
                             <Text text="{devicesModel>model}" />
-                            <ObjectNumber number="{devicesModel>price}" unit="zł"/>
+                            <ObjectNumber number="{devicesModel>price}" unit="zł" state="Success"/>
                             <Text text="{devicesModel>processor}" />
                             <Text text="{devicesModel>ram}" />
                             <Text text="{devicesModel>system}" />
+                            <Text text="{devicesModel>clientName}" />
                             <HBox justifyContent="SpaceAround">
                                 <Button icon="sap-icon://edit" press="onEditClientDialogOpen" />
                                 <Button icon="sap-icon://delete" type="Reject" press="onDeleteClient" />

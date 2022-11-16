@@ -157,7 +157,7 @@ sap.ui.define([
                     }.bind(this)
                 ).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("loadingClientsDataError"));
+                    ErrorDialog.open(this, this.getI18nText("loadingDataError"));
                 });
             },
 

@@ -55,7 +55,7 @@ sap.ui.define([
                 const oRowData = oDevicesDataModel.getProperty(sRowDataBindingPath);
 
                 ClientSH.getSHData(this);
-                
+
                 oDeviceClientDialog.setTitle(this.getI18nText("editDevice"));
                 CustomProperties.addCustomProperties(this, [{ name: "createDeviceDialog", value: oDeviceClientDialog }], false);
                 oDevicesDataModel.setProperty("/newDevice", {
@@ -99,7 +99,7 @@ sap.ui.define([
                     system: oDeviceData.system,
                     clientId: oDeviceData.clientId
                 };
-  
+
                 BusyDialog.open(this, this.getI18nText("updatingDevice"));
                 oDeviceData.document.ref.update(oPayload).then(function () {
                     BusyDialog.close(this);
@@ -170,7 +170,7 @@ sap.ui.define([
 
             _getDevicesData: function (oDevicesCollection) {
                 const oDevicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().devicesModel);
-                BusyDialog.open(this, this.getI18nText("loadingClientsData"));
+                BusyDialog.open(this, this.getI18nText("loadingDevicesData"));
                 oDevicesCollection.get().then(
                     function (oCollectionData) {
                         const aDevicesData = [];
@@ -178,12 +178,29 @@ sap.ui.define([
                         for (const oDocument of oCollectionData.docs)
                             aDevicesData.push({ ...oDocument.data(), oDocument: oDocument });
 
-                        BusyDialog.close(this);
-                        oDevicesDataModel.setProperty("/tableData", aDevicesData);
+                        const oFirestore = this.getOwnerComponent().getModel("firebase").getData().firestore;
+                        const oClientsCollection = oFirestore.collection("clients");
+                        oClientsCollection.get().then(
+                            function (oCollectionData) {
+                                for (const oDeviceData of aDevicesData) {
+                                    for (const oClient of oCollectionData.docs)
+                                        if (oDeviceData.clientId === oClient.id) {
+                                            const oClientData = oClient.data();
+                                            oDeviceData.clientName = `${oClientData.name} ${oClientData.surname}`;
+                                        }
+                                }
+
+                                BusyDialog.close(this);
+                                oDevicesDataModel.setProperty("/tableData", aDevicesData);
+                            }.bind(this)
+                        ).catch((oError) => {
+                            BusyDialog.close(this);
+                            ErrorDialog.open(this, this.getI18nText("loadingDataError"));
+                        });
                     }.bind(this)
                 ).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("loadingClientsDataError"));
+                    ErrorDialog.open(this, this.getI18nText("loadingDataError"));
                 });
             }
         });
