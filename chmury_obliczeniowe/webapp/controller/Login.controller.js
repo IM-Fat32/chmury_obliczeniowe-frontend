@@ -87,8 +87,10 @@ sap.ui.define([
                 oLoginViewModel.setProperty("/userPassword", "");
                 oLoginViewModel.setProperty("/userLogin", "");
 
-                this.getEmailInput().setValueState("None");
-                this.getPasswordInput().setValueState("None");
+                if (this.getEmailInput !== undefined && this.getPasswordInput !== undefined) {
+                    this.getEmailInput().setValueState("None");
+                    this.getPasswordInput().setValueState("None");
+                }
             },
 
             _getLoginData: function () {

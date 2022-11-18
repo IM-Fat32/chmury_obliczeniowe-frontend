@@ -8,6 +8,7 @@ sap.ui.define([], function () {
             clientsModel: "clientsModel",
             devicesModel: "devicesModel",
             searchHelpsModel: "searchHelpsModel",
+            servicesModel: "servicesModel",
         },
 
         getModels: function () {

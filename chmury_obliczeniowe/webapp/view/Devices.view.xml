@@ -37,7 +37,7 @@
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
                         <Text text="{i18n>clientName}" />
                     </Column>
-                    <Column hAlign="End" width="6rem" />
+                    <Column hAlign="End" width="8rem" />
                 </columns>
                 <items>
                     <ColumnListItem vAlign="Middle">
@@ -52,8 +52,9 @@
                             <Text text="{devicesModel>system}" />
                             <Text text="{devicesModel>clientName}" />
                             <HBox justifyContent="SpaceAround">
-                                <Button icon="sap-icon://edit" press="onEditClientDialogOpen" />
-                                <Button icon="sap-icon://delete" type="Reject" press="onDeleteClient" />
+                                <Button icon="sap-icon://history" press="onOpenHistory" />
+                                <Button icon="sap-icon://edit" press="onEditDeviceDialogOpen" />
+                                <Button icon="sap-icon://delete" type="Reject" press="onDeleteDevice" />
                             </HBox>
                         </cells>
                     </ColumnListItem>

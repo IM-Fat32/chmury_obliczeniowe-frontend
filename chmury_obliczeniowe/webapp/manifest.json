@@ -84,6 +84,9 @@
       "devicesModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
+      "servicesModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
       "searchHelpsModel": {
         "type": "sap.ui.model.json.JSONModel"
       },

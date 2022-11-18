@@ -4,6 +4,7 @@ sap.ui.define([
     "../utils/custom/customProperties",
     "../utils/dialogs/error",
     "../utils/dialogs/busy",
+    "../utils/dialogs/deviceHistoryDialog",
     "../utils/searchHelps/clientSH"
 ],
     /**
@@ -15,6 +16,7 @@ sap.ui.define([
         CustomProperties,
         ErrorDialog,
         BusyDialog,
+        DeviceHistoryDialog,
         ClientSH
     ) {
         "use strict";
@@ -48,7 +50,7 @@ sap.ui.define([
                 oDeviceClientDialog.open();
             },
 
-            onEditClientDialogOpen: function (oEvent) {
+            onEditDeviceDialogOpen: function (oEvent) {
                 const oDevicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().devicesModel);
                 const oDeviceClientDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.AddNewDevice", this);
                 const sRowDataBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().devicesModel);
@@ -112,7 +114,7 @@ sap.ui.define([
                 });
             },
 
-            onDeleteClient: function (oEvent) {
+            onDeleteDevice: function (oEvent) {
                 const oDevicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().devicesModel);
                 const oFirestore = this.getOwnerComponent().getModel("firebase").getData().firestore;
                 const oDevicesCollection = oFirestore.collection("devices");
@@ -202,6 +204,10 @@ sap.ui.define([
                     BusyDialog.close(this);
                     ErrorDialog.open(this, this.getI18nText("loadingDataError"));
                 });
+            },
+
+            onOpenHistory: function() {
+                DeviceHistoryDialog.open(this, "ssss")
             }
         });
     });
