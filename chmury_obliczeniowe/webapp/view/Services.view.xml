@@ -12,18 +12,21 @@
             <Table headerText="{i18n>servicesList}" class="sapUiSmallMarginTop" backgroundDesign="Solid" alternateRowColors="true" id="test">
                 <columns>
                     <Column>
+                        <Text text="{i18n>device}" />
+                    </Column>
+                    <Column hAlign="Center">
                         <Text text="{i18n>startDate}" />
                     </Column>
-                    <Column popinDisplay="Inline" hAlign="Center">
+                    <Column popinDisplay="Inline" hAlign="Center" minScreenWidth="Tablet">
                         <Text text="{i18n>serviceStatus}" />
                     </Column>
-                    <Column hAlign="Center" popinDisplay="Inline">
+                    <Column hAlign="Center" popinDisplay="Inline" minScreenWidth="Tablet">
                         <Text text="{i18n>endDate}" />
                     </Column>
-                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
                         <Text text="{i18n>pickupDate}" />
                     </Column>
-                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+                    <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
                         <Text text="{i18n>pickupStatus}" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">

@@ -4,7 +4,6 @@ sap.ui.define([
     "../utils/custom/customProperties",
     "../utils/dialogs/busy",
     "../utils/dialogs/error",
-    "../utils/dialogs/success",
 ],
     function (
         BaseController,
@@ -12,7 +11,6 @@ sap.ui.define([
         CustomProperties,
         BusyDialog,
         ErrorDialog,
-        SuccessDialog
     ) {
         "use strict";
 
