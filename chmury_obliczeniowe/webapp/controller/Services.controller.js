@@ -35,7 +35,7 @@ sap.ui.define([
                 DevicesSH.open(this, oEvent.getSource());
             },
 
-            onValueChange: function () {
+            onValueChange: function (oEvent) {
                 const oServicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().servicesModel);
                 const aFieldsData = Object.values(oServicesDataModel.getProperty("/newService"));
                 oServicesDataModel.setProperty("/newService/isCreateEnabled", aFieldsData.every((value) => (value === "" ? false : true)));
@@ -61,33 +61,63 @@ sap.ui.define([
                 oCreateServiceDialog.open();
             },
 
+            onUpdateService: function (oEvent) {
+                const oServicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().servicesModel);
+                const oFirestore = this.getOwnerComponent().getModel("firebase").getData().firestore;
+                const oServicesCollection = oFirestore.collection("services");
+                const oServiceData = oServicesDataModel.getProperty("/newService");
+
+                const oPayload = {
+                    deviceId: oServiceData.id,
+                    fixDescription: oServiceData.fixDescription,
+                    pickupStatus: oServiceData.pickupStatus,
+                    price: oServiceData.price,
+                    reasonDescription: oServiceData.reasonDescription,
+                    receiptDate: oServiceData.pickupStatus === "O" ? new Date() : "",
+                    serviceStatus: oServiceData.serviceStatus,
+                    startDate: oServiceData.startDate,
+                    endDate: oServiceData.serviceStatus === "Z" ? new Date() : "",
+                };
+
+                BusyDialog.open(this, this.getI18nText("updatingDevice"));
+                oServiceData.document.ref.update(oPayload).then(function () {
+                    BusyDialog.close(this);
+                    this.getCreateServiceDialog().close();
+                    sap.m.MessageToast.show(this.getI18nText("updateDeviceSuccess"));
+                    this._getServicesData(oServicesCollection);
+                }.bind(this)).catch((oError) => {
+                    BusyDialog.close(this);
+                    ErrorDialog.open(this, this.getI18nText("updateDeviceError"));
+                });
+            },
+
             onEditServiceDialogOpen: function (oEvent) {
-                const oDevicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().servicesModel);
-                const oDeviceClientDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.AddNewDevice", this);
+                const oServiceDataModel = this.getOwnerComponent().getModel(NAMES.getModels().servicesModel);
+                const oServicesDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.EditService", this);
                 const sRowDataBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().servicesModel);
-                const oRowData = oDevicesDataModel.getProperty(sRowDataBindingPath);
+                const oRowData = oServiceDataModel.getProperty(sRowDataBindingPath);
 
                 DevicesSH.getSHData(this);
 
-                oDeviceClientDialog.setTitle(this.getI18nText("editDevice"));
-                CustomProperties.addCustomProperties(this, [{ name: "createDeviceDialog", value: oDeviceClientDialog }], false);
-                oDevicesDataModel.setProperty("/newDevice", {
+                oServicesDialog.setTitle(this.getI18nText("editService"));
+                CustomProperties.addCustomProperties(this, [{ name: "createServiceDialog", value: oServicesDialog }], false);
+                oServiceDataModel.setProperty("/newService", {
                     isCreateEnabled: true,
                     isEditMode: true,
-                    brand: oRowData.brand,
-                    guarantee: oRowData.guarantee,
-                    isInService: oRowData.isInService,
-                    model: oRowData.model,
+                    id: oRowData.deviceId,
+                    reasonDescription: oRowData.reasonDescription,
+                    fixDescription: oRowData.fixDescription,
+                    serviceStatus: oRowData.serviceStatus,
+                    pickupStatus: oRowData.pickupStatus,
                     price: oRowData.price,
-                    processor: oRowData.processor,
-                    ram: oRowData.ram,
-                    system: oRowData.system,
-                    clientId: oRowData.clientId,
+                    startDate: oRowData.startDate,
+                    endDate: oRowData.endDate === "" ? null : oRowData.endDate,
+                    receiptDate: oRowData.receiptDate === "" ? null : oRowData.receiptDate,
                     document: oRowData.oDocument,
                 });
 
-                this.getView().addDependent(oDeviceClientDialog);
-                oDeviceClientDialog.open();
+                this.getView().addDependent(oServicesDialog);
+                oServicesDialog.open();
             },
 
 
@@ -120,15 +150,21 @@ sap.ui.define([
             },
 
             _onPatternMatched: function () {
+                const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
+                if (!oAuthModel.getProperty("/isUserAuth")) {
+                    this.getOwnerComponent().getRouter().navTo("Login");
+                    return;
+                }
+
                 const oFirestore = this.getOwnerComponent().getModel("firebase").getData().firestore;
                 const oServicesCollection = oFirestore.collection("services");
                 this._getServicesData(oServicesCollection);
             },
 
-            _getServicesData: function (oDevicesCollection) {
+            _getServicesData: function (oServicesCollection) {
                 const oServicesModel = this.getOwnerComponent().getModel(NAMES.getModels().servicesModel);
                 BusyDialog.open(this, this.getI18nText("loadingServicesData"));
-                oDevicesCollection.get().then(
+                oServicesCollection.get().then(
                     function (oCollectionData) {
                         const aServicesData = [];
 
@@ -163,6 +199,7 @@ sap.ui.define([
                                                         oServiceData.clientName = `${oClientData.name} ${oClientData.surname}`;
                                                     }
                                             }
+
                                             oServicesModel.setProperty("/tableData", aServicesData);
 
                                             this._bindTableItems();
@@ -238,10 +275,6 @@ sap.ui.define([
                 const oItemData = oServiceDataModel.getProperty(oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().servicesModel));
 
                 ServiceDetails.open(this, oItemData.oDocument)
-            },
-
-            onEditServiceDialogOpen: function () {
-
             },
 
             onDeleteService: function (oEvent) {

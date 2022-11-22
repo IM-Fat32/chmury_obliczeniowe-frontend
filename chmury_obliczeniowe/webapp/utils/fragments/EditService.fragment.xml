@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog contentWidth="450px" titleAlignment="Center">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Label text="{i18n>device}:" />
+                <Input selectedKey="{servicesModel>/newService/id}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="openShDialog" textFormatMode="ValueKey" suggestionItems="{searchHelpsModel>/devicesShData}">
+                    <suggestionItems>
+                        <core:ListItem key="{searchHelpsModel>id}" text="{searchHelpsModel>brand} {searchHelpsModel>model}" additionalText="{searchHelpsModel>ram} {searchHelpsModel>processor}" />
+                    </suggestionItems>
+                </Input>
+                <Label text="{i18n>price}:" />
+                <Input value="{servicesModel>/newService/price}" valueLiveUpdate="true" maxLength="30" liveChange="onValueChange" />
+
+                <Label text="Status zgłoszenia:" />
+                <Select selectedKey="{servicesModel>/newService/serviceStatus}" change="onValueChange" width="100%">
+                    <items>
+                        <core:Item key="N" text="Nowe" />
+                        <core:Item key="R" text="W trakcie realizacji" />
+                        <core:Item key="Z" text="Zakończone" />
+                    </items>
+                </Select>
+
+                <Label text="Status odbioru:" />
+                <Select selectedKey="{servicesModel>/newService/pickupStatus}" change="onValueChange" width="100%">
+                    <items>
+                        <core:Item key="N" text="Nieodebrane" />
+                        <core:Item key="O" text="Odebrane" />
+                    </items>
+                </Select>
+
+                <Label text="Opis usterki:" />
+                <TextArea value="{servicesModel>/newService/reasonDescription}" valueLiveUpdate="true" rows="5" maxLength="500" liveChange="onValueChange" width="100%" />
+
+                <Label text="Opis naprawy:" />
+                <TextArea value="{servicesModel>/newService/fixDescription}" valueLiveUpdate="true" rows="5" maxLength="500" liveChange="onValueChange" width="100%" />
+            </VBox>
+        </content>
+        <buttons>
+            <Button text="{i18n>add}" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? false : true }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onCreateService" />
+            <Button text="{i18n>update}" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? true : false }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onUpdateService" />
+            <Button text="{i18n>close}" press="onCloseDialog" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

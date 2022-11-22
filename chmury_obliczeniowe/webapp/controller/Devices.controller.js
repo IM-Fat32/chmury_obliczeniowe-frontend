@@ -5,7 +5,9 @@ sap.ui.define([
     "../utils/dialogs/error",
     "../utils/dialogs/busy",
     "../utils/dialogs/deviceHistoryDialog",
-    "../utils/searchHelps/clientSH"
+    "../utils/searchHelps/clientSH",
+     //formatters
+     "../utils/formatters/Services.formatter",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} BaseController
@@ -17,11 +19,15 @@ sap.ui.define([
         ErrorDialog,
         BusyDialog,
         DeviceHistoryDialog,
-        ClientSH
+        ClientSH,
+        //formatters
+        ServicesFormatter
     ) {
         "use strict";
 
         return BaseController.extend("chm.obl.chmuryobliczeniowe.controller.Devices", {
+            servicesFormatter: ServicesFormatter,
+            
             onInit: function () {
                 this.getOwnerComponent().getRouter().getRoute("Devices").attachMatched(this._onPatternMatched, this);
             },
@@ -165,6 +171,12 @@ sap.ui.define([
             },
 
             _onPatternMatched: function () {
+                const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
+                if (!oAuthModel.getProperty("/isUserAuth")) {
+                    this.getOwnerComponent().getRouter().navTo("Login");
+                    return;
+                }
+                
                 const oFirestore = this.getOwnerComponent().getModel("firebase").getData().firestore;
                 const oDevicesCollection = oFirestore.collection("devices");
                 this._getDevicesData(oDevicesCollection);
@@ -206,8 +218,12 @@ sap.ui.define([
                 });
             },
 
-            onOpenHistory: function() {
-                DeviceHistoryDialog.open(this, "ssss")
+            onOpenHistory: function (oEvent) {
+                const oDevicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().devicesModel);
+                const sBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath();
+                const oRowData = oDevicesDataModel.getProperty(sBindingPath);
+
+                DeviceHistoryDialog.open(this, oRowData.oDocument.id);
             }
         });
     });
