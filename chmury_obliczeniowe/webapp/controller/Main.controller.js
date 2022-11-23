@@ -37,11 +37,5 @@ sap.ui.define([
                 if (!oAuthModel.getProperty("/isUserAuth"))
                     this.getOwnerComponent().getRouter().navTo("Login");
             },
-
-            _setLoggedUserData: function () {
-                const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
-                oAuthModel.setProperty("/loggedUserData", null);
-                oAuthModel.setProperty("/isUserAuth", false);
-            },
         });
     });

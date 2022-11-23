@@ -3,6 +3,7 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "../utils/dialogs/busy",
     "../utils/dialogs/error",
+    "../utils/constants/NAMES",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -11,7 +12,8 @@ sap.ui.define([
         Controller,
         History,
         BusyDialog,
-        ErrorDialog
+        ErrorDialog,
+        NAMES
     ) {
         "use strict";
 
@@ -75,6 +77,12 @@ sap.ui.define([
                     BusyDialog.close(this);
                     ErrorDialog.open(this, oError.message);
                 });
+            },
+
+            _setLoggedUserData: function () {
+                const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
+                oAuthModel.setProperty("/loggedUserData", null);
+                oAuthModel.setProperty("/isUserAuth", false);
             },
 
         });

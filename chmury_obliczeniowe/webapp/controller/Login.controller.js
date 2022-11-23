@@ -73,12 +73,6 @@ sap.ui.define([
                 this.getPasswordInput().setValueStateText(sErrorMessage);
             },
 
-            _setLoggedUserData: function (oUserData) {
-                const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
-                oAuthModel.setProperty("/loggedUserData", oUserData);
-                oAuthModel.setProperty("/isUserAuth", true);
-            },
-
             _onPatternMatched: function () {
                 const oLoginViewModel = this.getOwnerComponent().getModel(NAMES.getModels().loginViewModel);
                 oLoginViewModel.setProperty("/isLoginFilled", false);
