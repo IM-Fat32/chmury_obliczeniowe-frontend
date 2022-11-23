@@ -4,38 +4,38 @@
             <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" id="avatar--container">
                 <HBox width="100%" class="sapUiTinyMarginBegin">
                     <Button icon="sap-icon://nav-back" press="onNavBack" class="sapUiSmallMarginEnd" />
-                    <Button text="{i18n>newDevice}" press="onCreateDeviceDialogOpen" icon="sap-icon://laptop" />
+                    <Button text="Dodaj urządzenie" press="onCreateDeviceDialogOpen" icon="sap-icon://laptop" />
                 </HBox>
                 <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
             </HBox>
-            <Table headerText="{i18n>devicesList}" class="sapUiSmallMarginTop" backgroundDesign="Solid" items="{devicesModel>/tableData}" alternateRowColors="true">
+            <Table headerText="Lista urządzeń" class="sapUiSmallMarginTop" backgroundDesign="Solid" items="{devicesModel>/tableData}" alternateRowColors="true">
                 <columns>
                     <Column>
-                        <Text text="{i18n>brand}" />
+                        <Text text="Marka" />
                     </Column>
                     <Column popinDisplay="Inline" hAlign="Center">
-                        <Text text="{i18n>guarantee}" />
+                        <Text text="Gwarancja" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline">
-                        <Text text="{i18n>service}" />
+                        <Text text="W naprawie" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
-                        <Text text="{i18n>model}" />
+                        <Text text="Model" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
-                        <Text text="{i18n>price}" />
+                        <Text text="Cena" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
-                        <Text text="{i18n>processor}" />
+                        <Text text="Procesor" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
-                        <Text text="{i18n>ram}" />
+                        <Text text="RAM" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
-                        <Text text="{i18n>system}" />
+                        <Text text="System" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
-                        <Text text="{i18n>clientName}" />
+                        <Text text="Dane klienta" />
                     </Column>
                     <Column hAlign="End" width="8rem" />
                 </columns>

@@ -62,10 +62,10 @@ sap.ui.define([
                 const sEmail = oSignupModel.getProperty("/userLogin");
                 const sPassword = oSignupModel.getProperty("/userPassword");
 
-                BusyDialog.open(this, "creatingAccount");
+                BusyDialog.open(this, "Tworzenie konta");
                 firebase.auth().createUserWithEmailAndPassword(sEmail, sPassword).then((userCredential) => {
                     BusyDialog.close(this);
-                    SuccessDialog.open(this, this.getI18nText("accountCreated"), function () { this.getOwnerComponent().getRouter().navTo("Login") }.bind(this));
+                    SuccessDialog.open(this, "Konto zastało utworzone", function () { this.getOwnerComponent().getRouter().navTo("Login") }.bind(this));
                 }).catch((oError) => {
                     BusyDialog.close(this);
                     ErrorDialog.open(this, oError.message);

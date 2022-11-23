@@ -17,7 +17,7 @@ sap.ui.define([
                     name: "historyDialog",
                     value: new sap.m.Dialog({
                         contentWidth: "450px",
-                        title: oController.getI18nText("deviceHistory"),
+                        title: "Historia napraw urządzenia",
                         titleAlignment: "Center",
                         content: [
                             new sap.m.List({
@@ -31,7 +31,7 @@ sap.ui.define([
                             })
                         ],
                         beginButton: new sap.m.Button({
-                            text: oController.getI18nText("close"),
+                            text: "Zamknij",
                             press: function () {
                                 oController.getOwnerComponent().getHistoryDialog().close();
                             }

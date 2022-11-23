@@ -75,11 +75,11 @@ sap.ui.define([
 
         _handleDiffrentPasswords: function (oController, oModel) {
             oController.getPasswordInput().setValueState("Error");
-            oController.getPasswordInput().setValueStateText(oController.getI18nText("diffrentPasswords"));
+            oController.getPasswordInput().setValueStateText("Hasła nie są identyczne");
             oModel.setProperty("/isPasswordValid", false);
 
             oController.getRepeatPasswordInput().setValueState("Error");
-            oController.getRepeatPasswordInput().setValueStateText(oController.getI18nText("diffrentPasswords"));
+            oController.getRepeatPasswordInput().setValueStateText("Hasła nie są identyczne");
             oModel.setProperty("/isPasswordRepeatValid", false);
         },
 
@@ -90,7 +90,7 @@ sap.ui.define([
 
         _handleInvalidRepeatPassword: function (oController, oModel) {
             oController.getRepeatPasswordInput().setValueState("Error");
-            oController.getRepeatPasswordInput().setValueStateText(oController.getI18nText("invalidPassword"));
+            oController.getRepeatPasswordInput().setValueStateText("Hasło musi zawierać conajmniej 6 znaków");
             oModel.setProperty("/isPasswordRepeatValid", false);
         },
 
@@ -101,7 +101,7 @@ sap.ui.define([
 
         _handleInvalidPassword: function (oController, oModel) {
             oController.getPasswordInput().setValueState("Error");
-            oController.getPasswordInput().setValueStateText(oController.getI18nText("invalidPassword"));
+            oController.getPasswordInput().setValueStateText("Hasło musi zawierać conajmniej 6 znaków");
             oModel.setProperty("/isPasswordValid", false);
         },
 
@@ -112,7 +112,7 @@ sap.ui.define([
 
         _handleInvalidEmail: function (oController, oModel) {
             oController.getEmailInput().setValueState("Error");
-            oController.getEmailInput().setValueStateText(oController.getI18nText("invalidEmail"));
+            oController.getEmailInput().setValueStateText("Niepoprawny adres email");
             oModel.setProperty("/isEmailValid", false);
         },
     };

@@ -11,7 +11,7 @@ sap.ui.define([
                 {
                     name: "busyDialog",
                     value: new sap.m.BusyDialog({
-                        title: oController.getI18nText(sTitleName),
+                        title: sTitleName,
                         titleAlignment: "Center"
                     })
                 }

@@ -19,12 +19,12 @@ sap.ui.define([
                 {
                     name: "serviceDetailsDialog",
                     value: new sap.m.Dialog({
-                        title: oController.getI18nText("serviceDetails"),
+                        title: "Szczegóły zgłoszenia",
                         titleAlignment: "Center",
                         contentHeight: "500px",
                         contentWidth: "500px",
                         beginButton: new sap.m.Button({
-                            text: oController.getI18nText("close"),
+                            text: "Zamknij",
                             press: function () {
                                 oController.getOwnerComponent().getServiceDetailsDialog().close();
                             }
@@ -70,12 +70,12 @@ sap.ui.define([
                         }.bind(this)
                     ).catch((oError) => {
                         BusyDialog.close(this.getController());
-                        ErrorDialog.open(this.getController(), this.getController().getI18nText("loadingDataError"));
+                        ErrorDialog.open(this.getController(), "Pobieranie danych nie powiodło się");
                     });
                 }.bind(this))
             }.bind(this)).catch((oError) => {
                 BusyDialog.close(this.getController());
-                ErrorDialog.open(this.getController(), this.getController().getI18nText("loadingDataError"));
+                ErrorDialog.open(this.getController(), "Pobieranie danych nie powiodło się");
             });
         },
 
@@ -84,31 +84,31 @@ sap.ui.define([
                 items: [
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("clientName")}:` }),
+                            new sap.m.Label({ text: "Dane klienta:" }),
                             new sap.m.Text({ text: "{/clientName}" }).addStyleClass("sapUiTinyMarginBegin")
                         ]
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("device")}:` }),
+                            new sap.m.Label({ text: "Urządzenie:" }),
                             new sap.m.Text({ text: "{/deviceData/brand} {/deviceData/model} {/deviceData/ram} {/deviceData/processor}" }).addStyleClass("sapUiTinyMarginBegin")
                         ]
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("startDate")}:` }),
+                            new sap.m.Label({ text: "Data przyjęcia:" }),
                             new sap.m.Text({ text: "{/startDate}" }).addStyleClass("sapUiTinyMarginBegin")
                         ]
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("endDate")}:` }),
+                            new sap.m.Label({ text: "Data zakończenia prac:" }),
                             new sap.m.Text({ text: "{/endDate}" }).addStyleClass("sapUiTinyMarginBegin")
                         ]
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("serviceStatus")}:` }),
+                            new sap.m.Label({ text: "Status zgłoszenia:" }),
                             new sap.m.ObjectStatus({
                                 inverted: true,
                                 text: { path: '/serviceStatus', formatter: ServicesFormatter.formatServiceText.bind(this.getController()) },
@@ -118,13 +118,13 @@ sap.ui.define([
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("pickupDate")}:` }),
+                            new sap.m.Label({ text: "Data odbioru:" }),
                             new sap.m.Text({ text: "{/receiptDate}" }).addStyleClass("sapUiTinyMarginBegin")
                         ]
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.HBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("pickupStatus")}:` }),
+                            new sap.m.Label({ text: "Status odbioru:" }),
                             new sap.m.ObjectStatus({
                                 inverted: true,
                                 text: { path: '/pickupStatus', formatter: ServicesFormatter.formatPickupText.bind(this.getController()) },
@@ -134,7 +134,7 @@ sap.ui.define([
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.VBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("defectDescription")}:` }),
+                            new sap.m.Label({ text: "Opis usterki:" }),
                             new sap.m.TextArea({
                                 width: "100%",
                                 rows: 5,
@@ -145,7 +145,7 @@ sap.ui.define([
                     }).addStyleClass("sapUiTinyMarginBottom"),
                     new sap.m.VBox({
                         items: [
-                            new sap.m.Label({ text: `${this.getController().getI18nText("fixDescription")}:` }),
+                            new sap.m.Label({ text: "Opis naprawy:" }),
                             new sap.m.TextArea({
                                 width: "100%",
                                 rows: 5,

@@ -40,7 +40,7 @@ sap.ui.define([
 
             onLoginPress: function () {
                 const oLoginData = this._getLoginData();
-                BusyDialog.open(this, "logging");
+                BusyDialog.open(this, "Logowanie..");
                 firebase.auth().signInWithEmailAndPassword(oLoginData.name, oLoginData.password).then((userCredential) => {
                     BusyDialog.close(this);
                     this._setLoggedUserData(userCredential.user);

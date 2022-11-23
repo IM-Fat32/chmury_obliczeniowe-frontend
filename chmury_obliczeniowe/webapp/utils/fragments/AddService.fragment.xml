@@ -2,22 +2,22 @@
     <Dialog contentWidth="450px" titleAlignment="Center">
         <content>
             <VBox class="sapUiSmallMargin">
-                <Label text="{i18n>device}:" />
+                <Label text="Urządzenie:" />
                 <Input selectedKey="{servicesModel>/newService/id}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="openShDialog" textFormatMode="ValueKey" suggestionItems="{searchHelpsModel>/devicesShData}">
                     <suggestionItems>
                         <core:ListItem key="{searchHelpsModel>id}" text="{searchHelpsModel>brand} {searchHelpsModel>model}" additionalText="{searchHelpsModel>ram} {searchHelpsModel>processor}" />
                     </suggestionItems>
                 </Input>
-                <Label text="{i18n>price}:" />
+                <Label text="Cena:" />
                 <Input value="{servicesModel>/newService/price}" valueLiveUpdate="true" maxLength="30" liveChange="onValueChange" />
-                <Label text="{i18n>description}" />
+                <Label text="Opis" />
                 <TextArea value="{servicesModel>/newService/description}" valueLiveUpdate="true" rows="5" maxLength="500" liveChange="onValueChange" width="100%"/>
             </VBox>
         </content>
         <buttons>
-            <Button text="{i18n>add}" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? false : true }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onCreateService" />
-            <Button text="{i18n>update}" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? true : false }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onUpdateService" />
-            <Button text="{i18n>close}" press="onCloseDialog" />
+            <Button text="Dodaj" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? false : true }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onCreateService" />
+            <Button text="Zaktualizuj" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? true : false }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onUpdateService" />
+            <Button text="Zamknij" press="onCloseDialog" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

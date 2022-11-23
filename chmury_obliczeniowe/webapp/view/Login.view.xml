@@ -3,18 +3,18 @@
         <content>
             <HBox justifyContent="Center" alignItems="Center" width="100%" height="90%">
                 <VBox class="login-dialog--container">
-                    <Title width="100%" textAlign="Center" text="{i18n>loginTitle}" class="sapUiSmallMarginBottom" />
+                    <Title width="100%" textAlign="Center" text="Logowanie" class="sapUiSmallMarginBottom" />
                     <VBox class="sapUiSmallMarginBottom">
-                        <Label text="{i18n>userName}" />
+                        <Label text="Adres e-mail" />
                         <Input id="login-email--input" type="Email" valueLiveUpdate="true" liveChange="onCharChange" change="onEmailValueChange" fieldGroupIds="isLoginFilled" value="{loginViewModel>/userLogin}" />
                     </VBox>
                     <VBox class="sapUiSmallMarginBottom">
-                        <Label text="{i18n>userPassword}" />
+                        <Label text="Hasło" />
                         <Input id="login-password--input" type="Password" valueLiveUpdate="true" liveChange="onCharChange" fieldGroupIds="isPasswordFilled" value="{loginViewModel>/userPassword}" showValueHelp="true" valueHelpIconSrc="sap-icon://show" />
                     </VBox>
                     <HBox width="100%" justifyContent="SpaceBetween" alignItems="Center">
-                        <Link text="{i18n>signup}" press="onRegister" />
-                        <Button text="{i18n>login}" type="Emphasized" enabled="{= ${loginViewModel>/isLoginFilled} &amp;&amp; ${loginViewModel>/isPasswordFilled} &amp;&amp; ${loginViewModel>/isEmailValid}? true : false}" press="onLoginPress"/>
+                        <Link text="Utwórz konto" press="onRegister" />
+                        <Button text="Zaloguj" type="Emphasized" enabled="{= ${loginViewModel>/isLoginFilled} &amp;&amp; ${loginViewModel>/isPasswordFilled} &amp;&amp; ${loginViewModel>/isEmailValid}? true : false}" press="onLoginPress"/>
                     </HBox>
                 </VBox>
             </HBox>

@@ -5,9 +5,9 @@
                 <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
             </HBox>
             <HBox>
-                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>clients}" press="onOpenClientsView" frameType="OneByHalf"/>
-                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>devices}" press="onOpenDevicesView" frameType="OneByHalf"/>
-                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="{i18n>repairs}" press="onOpenServicesView" frameType="OneByHalf"/>
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Klienci" press="onOpenClientsView" frameType="OneByHalf" />
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Urządzenia" press="onOpenDevicesView" frameType="OneByHalf" />
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Naprawy" press="onOpenServicesView" frameType="OneByHalf" />
             </HBox>
         </content>
     </Page>

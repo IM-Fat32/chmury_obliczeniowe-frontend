@@ -65,7 +65,7 @@ sap.ui.define([], function () {
             if (sPickupStatus === "N")
                 sPickupText = "Status odbioru: Nieodebrane";
 
-            sPickupText = "Status odbioru: " + this.getI18nText("pickupStatusNone");
+            sPickupText = "Status odbioru: " + "Brak";
 
             return `${sServiceText} | ${sPickupText}`
 

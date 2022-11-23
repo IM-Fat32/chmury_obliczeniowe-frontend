@@ -2,7 +2,7 @@
     <Popover placement="Bottom" showHeader="false">
         <List>
             <items>
-                <StandardListItem title="{i18n>logout}" type="Active" press="onLogout" />
+                <StandardListItem title="Wyloguj" type="Active" press="onLogout" />
             </items>
         </List>
     </Popover>

@@ -61,7 +61,7 @@ sap.ui.define([
             ).catch((oError) => {
                 if (oController === null)
                     this.getShDialog().setBusy(false);
-                ErrorDialog.open(this, this.getI18nText("loadingDataError"));
+                ErrorDialog.open(this, "Pobieranie danych nie powiodło się");
             });
         }
     };

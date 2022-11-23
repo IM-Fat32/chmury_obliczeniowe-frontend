@@ -6,17 +6,17 @@
             </HBox>
             <HBox justifyContent="Center" alignItems="Center" width="100%" height="90%">
                 <VBox class="login-dialog--container">
-                    <Title width="100%" textAlign="Center" text="{i18n>signupTitle}" class="sapUiSmallMarginBottom" />
+                    <Title width="100%" textAlign="Center" text="Utwórz konto" class="sapUiSmallMarginBottom" />
                     <VBox class="sapUiSmallMarginBottom">
-                        <Label text="{i18n>userName}" />
+                        <Label text="Adres e-mail" />
                         <Input id="signup-email--input" type="Email" valueLiveUpdate="true" liveChange="onCharChange" change="onEmailValueChange" fieldGroupIds="isLoginFilled" value="{signupViewModel>/userLogin}" />
                     </VBox>
                     <VBox class="sapUiSmallMarginBottom">
-                        <Label text="{i18n>userPassword}" />
+                        <Label text="Hasło" />
                         <Input id="signup-password--input" type="Password" valueLiveUpdate="true" liveChange="onCharChange" change="onPasswordChange" fieldGroupIds="isPasswordFilled" value="{signupViewModel>/userPassword}" showValueHelp="true" valueHelpIconSrc="sap-icon://show" />
                     </VBox>
                     <VBox class="sapUiSmallMarginBottom">
-                        <Label text="{i18n>repeatPassword}" />
+                        <Label text="Powtórz hasło" />
                         <Input
                             id="signup-repeat-password--input"
                             type="Password"
@@ -31,7 +31,7 @@
                     </VBox>
                     <HBox width="100%" justifyContent="End">
                         <Button
-                            text="{i18n>signup}"
+                            text="Utwórz konto"
                             type="Emphasized"
                             press="onSignup"
                             enabled="{= ${signupViewModel>/isLoginFilled} &amp;&amp; ${signupViewModel>/isPasswordFilled} &amp;&amp; ${signupViewModel>/isPasswordRepeatFilled}  &amp;&amp; ${signupViewModel>/isEmailValid} &amp;&amp; ${signupViewModel>/isPasswordValid} &amp;&amp; ${signupViewModel>/isPasswordRepeatValid}? true : false }"

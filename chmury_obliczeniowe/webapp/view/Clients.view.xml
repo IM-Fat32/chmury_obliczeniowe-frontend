@@ -4,30 +4,30 @@
             <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" id="avatar--container">
                 <HBox width="100%" class="sapUiTinyMarginBegin">
                     <Button icon="sap-icon://nav-back" press="onNavBack" class="sapUiSmallMarginEnd" />
-                    <Button text="{i18n>newClient}" press="onCreateClientDialogOpen" icon="sap-icon://add-employee" />
+                    <Button text="Dodaj klienta" press="onCreateClientDialogOpen" icon="sap-icon://add-employee" />
                 </HBox>
                 <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
             </HBox>
 
-            <Table headerText="{i18n>clientsList}" class="sapUiSmallMarginTop" backgroundDesign="Solid" items="{clientsModel>/tableData}" alternateRowColors="true">
+            <Table headerText="Lista klientów" class="sapUiSmallMarginTop" backgroundDesign="Solid" items="{clientsModel>/tableData}" alternateRowColors="true">
                 <columns>
                     <Column>
-                        <Text text="{i18n>surname}" />
+                        <Text text="Nazwisko" />
                     </Column>
                     <Column popinDisplay="Inline" hAlign="Center">
-                        <Text text="{i18n>name}" />
+                        <Text text="Imię" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline">
-                        <Text text="{i18n>city}" />
+                        <Text text="Miejscowość" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
-                        <Text text="{i18n>street}" />
+                        <Text text="Ulica" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
-                        <Text text="{i18n>houseNumber}" />
+                        <Text text="Numer domu" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Desktop">
-                        <Text text="{i18n>postalCode}" />
+                        <Text text="Kod pocztowy" />
                     </Column>
                     <Column hAlign="End" width="6rem" />
                 </columns>

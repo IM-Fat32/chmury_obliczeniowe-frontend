@@ -24,7 +24,7 @@ sap.ui.define([
                 const oCreateClientDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.AddNewClient", this);
                 
                 CustomProperties.addCustomProperties(this, [{ name: "createClientDialog", value: oCreateClientDialog }], false);
-                oCreateClientDialog.setTitle(this.getI18nText("createClient"));
+                oCreateClientDialog.setTitle("Dodawanie klienta");
                 oClientsDataModel.setProperty("/newClient", {
                     isCreateEnabled: false,
                     isEditMode: false,
@@ -46,7 +46,7 @@ sap.ui.define([
                 const sRowDataBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().clientsModel);
                 const oRowData = oClientsDataModel.getProperty(sRowDataBindingPath);
                 
-                oCreateClientDialog.setTitle(this.getI18nText("editClient"));
+                oCreateClientDialog.setTitle("Edytowanie danych klienta");
                 CustomProperties.addCustomProperties(this, [{ name: "createClientDialog", value: oCreateClientDialog }], false);
                 oClientsDataModel.setProperty("/newClient", {
                     isCreateEnabled: true,
@@ -77,14 +77,14 @@ sap.ui.define([
                 const sRowDataBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().clientsModel);
                 const oRowData = oClientsDataModel.getProperty(sRowDataBindingPath);
 
-                BusyDialog.open(this, this.getI18nText("deletingClient"));
+                BusyDialog.open(this, "Usuwanie klienta..");
                 oRowData.oDocument.ref.delete().then(function () {
                     BusyDialog.close(this);
-                    sap.m.MessageToast.show(this.getI18nText("deleteUserSuccess"));
+                    sap.m.MessageToast.show("Klient został usunięty");
                     this._getClientsData(oClientsCollection);
                 }.bind(this)).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("deleteUserError"));
+                    ErrorDialog.open(this, "Usuwanie klienta nie powiodło się");
                 });
             },
 
@@ -102,15 +102,15 @@ sap.ui.define([
                     surname: oRowData.surname
                 };
 
-                BusyDialog.open(this, this.getI18nText("updatingClient"));
+                BusyDialog.open(this, "Aktualizowanie danych klienta..");
                 oRowData.document.ref.update(oPayload).then(function () {
                     BusyDialog.close(this);
                     this.getCreateClientDialog().close();
-                    sap.m.MessageToast.show(this.getI18nText("updateClientSucces"));
+                    sap.m.MessageToast.show("Dane klienta zostały zaktualizowane");
                     this._getClientsData(oClientsCollection);
                 }.bind(this)).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("updateClientError"));
+                    ErrorDialog.open(this, "Aktualizowanie danych klienta nie powiodło się");
                 });
             },
 
@@ -120,7 +120,7 @@ sap.ui.define([
                 const oClientsCollection = oFirestore.collection("clients");
                 const oUserData = oClientsDataModel.getProperty("/newClient");
 
-                BusyDialog.open(this, this.getI18nText("addingClient"));
+                BusyDialog.open(this, "Dodawanie klienta..");
                 oClientsCollection.add({
                     city: oUserData.city,
                     houseNumber: oUserData.houseNumber,
@@ -130,19 +130,19 @@ sap.ui.define([
                     surname: oUserData.surname
                 }).then(function () {
                     BusyDialog.close(this);
-                    sap.m.MessageToast.show(this.getI18nText("addClientSuccess"));
+                    sap.m.MessageToast.show("Klient został dodany");
                     this.getCreateClientDialog().close();
                     this._getClientsData(oClientsCollection);
                 }.bind(this)).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("addingUserError"));
+                    ErrorDialog.open(this, "Podczas dodawnia klienta wystąpił błąd");
                 });
             },
 
             _getClientsData: function (oClientsCollection) {
                 const oClientsDataModel = this.getOwnerComponent().getModel(NAMES.getModels().clientsModel);
 
-                BusyDialog.open(this, this.getI18nText("loadingClientsData"));
+                BusyDialog.open(this, "Pobieranie danych o klientach..");
                 oClientsCollection.get().then(
                     function (oCollectionData) {
                         const aClientsData = [];
@@ -155,7 +155,7 @@ sap.ui.define([
                     }.bind(this)
                 ).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("loadingDataError"));
+                    ErrorDialog.open(this, "Pobieranie danych nie powiodło się");
                 });
             },
 

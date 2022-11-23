@@ -4,55 +4,36 @@
             <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" id="avatar--container">
                 <HBox width="100%" class="sapUiTinyMarginBegin">
                     <Button icon="sap-icon://nav-back" press="onNavBack" class="sapUiSmallMarginEnd" />
-                    <Button text="{i18n>newRepeirment}" press="onCreateServiceDialogOpen" icon="sap-icon://create" />
+                    <Button text="Utwórz zgłoszenie" press="onCreateServiceDialogOpen" icon="sap-icon://create" />
                 </HBox>
                 <Avatar displaySize="XS" displayShape="Circle" class="sapUiSmallMarginEnd sapUiSmallMarginTop" showBorder="true" backgroundColor="Accent9" press="onAvatarPress" />
             </HBox>
 
-            <Table headerText="{i18n>servicesList}" class="sapUiSmallMarginTop" backgroundDesign="Solid" alternateRowColors="true" id="test">
+            <Table headerText="Lista zgłoszeń" class="sapUiSmallMarginTop" backgroundDesign="Solid" alternateRowColors="true" id="test">
                 <columns>
                     <Column>
-                        <Text text="{i18n>device}" />
+                        <Text text="Urządzenie" />
                     </Column>
                     <Column hAlign="Center">
-                        <Text text="{i18n>startDate}" />
+                        <Text text="Data przyjęcia" />
                     </Column>
                     <Column popinDisplay="Inline" hAlign="Center" minScreenWidth="Tablet">
-                        <Text text="{i18n>serviceStatus}" />
+                        <Text text="Status zgłoszenia" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" minScreenWidth="Tablet">
-                        <Text text="{i18n>endDate}" />
+                        <Text text="Data zakończenia prac" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
-                        <Text text="{i18n>pickupDate}" />
+                        <Text text="Data odbioru" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
-                        <Text text="{i18n>pickupStatus}" />
+                        <Text text="Status odbioru" />
                     </Column>
                     <Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="2500px">
-                        <Text text="{i18n>price}" />
+                        <Text text="Cena" />
                     </Column>
-
                     <Column hAlign="End" width="8rem" />
                 </columns>
-                <!-- <items>
-                    <ColumnListItem vAlign="Middle">
-                        <cells>
-                            <Text text="{servicesModel>startDate}" />
-                            <ObjectStatus inverted="true" text="{ path: 'servicesModel>serviceStatus', formatter: '.servicesFormatter.formatServiceText'} " state="{ path: 'servicesModel>serviceStatus', formatter: '.servicesFormatter.formatServiceStatus' }" />
-                            <CheckBox selected="{servicesModel>guarantee}" enabled="false" />
-                            <ObjectStatus inverted="true" text="{ path: 'servicesModel>pickupStatus', formatter: '.servicesFormatter.formatPickupText'} " state="{ path: 'servicesModel>pickupStatus', formatter: '.servicesFormatter.formatPickupStatus' } " />
-                            <Text text="{servicesModel>model}" />
-                            <Text text="{servicesModel>receiptDate}" />
-                            <ObjectNumber number="{servicesModel>price}" unit="zł" state="Success" />
-                            <HBox justifyContent="SpaceAround">
-                                <Button icon="sap-icon://hint" press="onOpenDetails" />
-                                <Button icon="sap-icon://edit" press="onEditServiceDialogOpen" />
-                                <Button icon="sap-icon://delete" type="Reject" press="onDeleteService" />
-                            </HBox>
-                        </cells>
-                    </ColumnListItem>
-                </items> -->
             </Table>
         </content>
     </Page>

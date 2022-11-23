@@ -9,7 +9,7 @@ sap.ui.define([
     return {
         open: function (oController, sMessage, fnCallback) {
             CustomProperties.addCustomProperties(this, [{
-                name: "successDialog", value: Dialog.getDialog(oController, "Success", sMessage,
+                name: "successDialog", value: Dialog.getDialog(oController, "Sukces", sMessage,
                     function () {
                         this.getSuccessDialog().close();
                         fnCallback();

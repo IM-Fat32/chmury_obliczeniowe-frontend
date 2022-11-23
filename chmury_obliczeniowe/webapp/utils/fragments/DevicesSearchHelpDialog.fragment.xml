@@ -1,5 +1,5 @@
 <c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core">
-    <SelectDialog contentWidth="600px" contentHeight="400px" title="{i18n>deviceSeachHelpTitle}" search="onSearch" confirm="onDialogConfirm" cancel="onDialogClose" items="{path: 'searchHelpsModel>/devicesShData'}">
+    <SelectDialog contentWidth="600px" contentHeight="400px" title="Wyszukiwanie urządzeń" search="onSearch" confirm="onDialogConfirm" cancel="onDialogClose" items="{path: 'searchHelpsModel>/devicesShData'}">
         <StandardListItem info="{searchHelpsModel>id}" title="{searchHelpsModel>brand} {searchHelpsModel>model}" description="{searchHelpsModel>ram} {searchHelpsModel>processor}" />
     </SelectDialog>
 </c:FragmentDefinition>

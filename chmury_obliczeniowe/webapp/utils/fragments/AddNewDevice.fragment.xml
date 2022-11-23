@@ -2,34 +2,34 @@
     <Dialog contentWidth="450px" titleAlignment="Center">
         <content>
             <VBox class="sapUiSmallMargin">
-                <Label text="{i18n>brand}:" />
+                <Label text="Marka:" />
                 <Input value="{devicesModel>/newDevice/brand}" valueLiveUpdate="true" maxLength="50" liveChange="onValueChange" />
-                <Label text="{i18n>model}:" />
+                <Label text="Model:" />
                 <Input value="{devicesModel>/newDevice/model}" valueLiveUpdate="true" maxLength="50" liveChange="onValueChange" />
-                <Label text="{i18n>price}:" />
+                <Label text="Cena:" />
                 <Input value="{devicesModel>/newDevice/price}" valueLiveUpdate="true" maxLength="50" liveChange="onValueChange" />
-                <Label text="{i18n>processor}:" />
+                <Label text="Procesor:" />
                 <Input value="{devicesModel>/newDevice/processor}" valueLiveUpdate="true" maxLength="50" liveChange="onValueChange" />
-                <Label text="{i18n>ram}:" />
+                <Label text="RAM:" />
                 <Input value="{devicesModel>/newDevice/ram}" valueLiveUpdate="true" maxLength="50" liveChange="onValueChange" />
-                <Label text="{i18n>system}:" />
+                <Label text="System:" />
                 <Input value="{devicesModel>/newDevice/system}" valueLiveUpdate="true" maxLength="50" liveChange="onValueChange" />
-                <Label text="{i18n>client}:" />
+                <Label text="Klient:" />
                 <Input selectedKey="{devicesModel>/newDevice/clientId}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="openShDialog" textFormatMode="ValueKey" suggestionItems="{searchHelpsModel>/clientsShData}">
                     <suggestionItems>
                         <core:ListItem key="{searchHelpsModel>id}" text="{searchHelpsModel>name} {searchHelpsModel>surname}" />
                     </suggestionItems>
                 </Input>
                 <HBox alignItems="Center">
-                    <Label text="{i18n>guarantee}:" />
+                    <Label text="Gwarancja:" />
                     <CheckBox selected="{devicesModel>/newDevice/guarantee}" />
                 </HBox>
             </VBox>
         </content>
         <buttons>
-            <Button text="{i18n>add}" type="Emphasized" visible="{= ${devicesModel>/newDevice/isEditMode} ? false : true }" enabled="{devicesModel>/newDevice/isCreateEnabled}" press="onCreateDevice" />
-            <Button text="{i18n>update}" type="Emphasized" visible="{= ${devicesModel>/newDevice/isEditMode} ? true : false }" enabled="{devicesModel>/newDevice/isCreateEnabled}" press="onUpdateDevice" />
-            <Button text="{i18n>close}" press="onCloseDialog" />
+            <Button text="Dodaj" type="Emphasized" visible="{= ${devicesModel>/newDevice/isEditMode} ? false : true }" enabled="{devicesModel>/newDevice/isCreateEnabled}" press="onCreateDevice" />
+            <Button text="Zaktualizuj" type="Emphasized" visible="{= ${devicesModel>/newDevice/isEditMode} ? true : false }" enabled="{devicesModel>/newDevice/isCreateEnabled}" press="onUpdateDevice" />
+            <Button text="Zamknij" press="onCloseDialog" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

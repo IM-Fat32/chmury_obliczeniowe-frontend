@@ -66,7 +66,7 @@ sap.ui.define([
             },
 
             onLogout: function () {
-                BusyDialog.open(this, "logoutAction");
+                BusyDialog.open(this, "Wylogowywanie..");
                 firebase.auth().signOut().then(() => {
                     this._setLoggedUserData();
                     BusyDialog.close(this);

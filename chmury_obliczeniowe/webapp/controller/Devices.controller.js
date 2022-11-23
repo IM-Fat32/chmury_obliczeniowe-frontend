@@ -37,7 +37,7 @@ sap.ui.define([
                 const oDeviceClientDialog = sap.ui.xmlfragment("chm.obl.chmuryobliczeniowe.utils.fragments.AddNewDevice", this);
 
                 CustomProperties.addCustomProperties(this, [{ name: "createDeviceDialog", value: oDeviceClientDialog }], false);
-                oDeviceClientDialog.setTitle(this.getI18nText("createDevice"));
+                oDeviceClientDialog.setTitle("Dodawnie urządzenia");
                 oDevicesDataModel.setProperty("/newDevice", {
                     isCreateEnabled: false,
                     isEditMode: false,
@@ -64,7 +64,7 @@ sap.ui.define([
 
                 ClientSH.getSHData(this);
 
-                oDeviceClientDialog.setTitle(this.getI18nText("editDevice"));
+                oDeviceClientDialog.setTitle("Edytowanie danych urządzenia");
                 CustomProperties.addCustomProperties(this, [{ name: "createDeviceDialog", value: oDeviceClientDialog }], false);
                 oDevicesDataModel.setProperty("/newDevice", {
                     isCreateEnabled: true,
@@ -108,15 +108,15 @@ sap.ui.define([
                     clientId: oDeviceData.clientId
                 };
 
-                BusyDialog.open(this, this.getI18nText("updatingDevice"));
+                BusyDialog.open(this, "Aktualizowanie danych urządzenia");
                 oDeviceData.document.ref.update(oPayload).then(function () {
                     BusyDialog.close(this);
                     this.getCreateDeviceDialog().close();
-                    sap.m.MessageToast.show(this.getI18nText("updateDeviceSuccess"));
+                    sap.m.MessageToast.show("Dane urządzenia zostały zaktualizowane");
                     this._getDevicesData(oDevicesCollection);
                 }.bind(this)).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("updateDeviceError"));
+                    ErrorDialog.open(this, "Aktualizowanie danych urządzenia nie powiodło się");
                 });
             },
 
@@ -127,14 +127,14 @@ sap.ui.define([
                 const sRowDataBindingPath = oEvent.getSource().getParent().getParent().getBindingContextPath(NAMES.getModels().devicesModel);
                 const oRowData = oDevicesDataModel.getProperty(sRowDataBindingPath);
 
-                BusyDialog.open(this, this.getI18nText("deletingDevice"));
+                BusyDialog.open(this, "Usuwanie danych urządzenia..");
                 oRowData.oDocument.ref.delete().then(function () {
                     BusyDialog.close(this);
-                    sap.m.MessageToast.show(this.getI18nText("deleteDeviceSuccess"));
+                    sap.m.MessageToast.show("Usuwanie danych urządzenia powiodło się");
                     this._getDevicesData(oDevicesCollection);
                 }.bind(this)).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("deleteDeviceError"));
+                    ErrorDialog.open(this, "Usuwanie danych urządzenia nie powiodło się");
                 });
             },
 
@@ -144,7 +144,7 @@ sap.ui.define([
                 const oDevicesCollection = oFirestore.collection("devices");
                 const oDeviceData = oDevicesDataModel.getProperty("/newDevice");
 
-                BusyDialog.open(this, this.getI18nText("addingDevices"));
+                BusyDialog.open(this, "Dodawanie urządzenia..");
                 oDevicesCollection.add({
                     brand: oDeviceData.brand,
                     guarantee: oDeviceData.guarantee,
@@ -157,12 +157,12 @@ sap.ui.define([
                     clientId: oDeviceData.clientId
                 }).then(function () {
                     BusyDialog.close(this);
-                    sap.m.MessageToast.show(this.getI18nText("addDeviceSuccess"));
+                    sap.m.MessageToast.show("Urządzenie dostało dodane");
                     this.getCreateDeviceDialog().close();
                     this._getDevicesData(oDevicesCollection);
                 }.bind(this)).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("addingDevicerError"));
+                    ErrorDialog.open(this, "Podczas dodawania urządzenia wystąpił błąd");
                 });
             },
 
@@ -184,7 +184,7 @@ sap.ui.define([
 
             _getDevicesData: function (oDevicesCollection) {
                 const oDevicesDataModel = this.getOwnerComponent().getModel(NAMES.getModels().devicesModel);
-                BusyDialog.open(this, this.getI18nText("loadingDevicesData"));
+                BusyDialog.open(this, "Pobieranie danych o urządzeniach..");
                 oDevicesCollection.get().then(
                     function (oCollectionData) {
                         const aDevicesData = [];
@@ -209,12 +209,12 @@ sap.ui.define([
                             }.bind(this)
                         ).catch((oError) => {
                             BusyDialog.close(this);
-                            ErrorDialog.open(this, this.getI18nText("loadingDataError"));
+                            ErrorDialog.open(this, "Pobieranie danych nie powiodło się");
                         });
                     }.bind(this)
                 ).catch((oError) => {
                     BusyDialog.close(this);
-                    ErrorDialog.open(this, this.getI18nText("loadingDataError"));
+                    ErrorDialog.open(this, "Pobieranie danych nie powiodło się");
                 });
             },
 

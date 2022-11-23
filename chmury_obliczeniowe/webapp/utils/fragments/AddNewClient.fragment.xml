@@ -2,24 +2,24 @@
     <Dialog contentWidth="450px" titleAlignment="Center">
         <content>
             <VBox class="sapUiSmallMargin">
-                <Label text="{i18n>name}:" />
+                <Label text="Imię:" />
                 <Input value="{clientsModel>/newClient/name}" valueLiveUpdate="true" maxLength="30" liveChange="onValueChange" />
-                <Label text="{i18n>surname}:" />
+                <Label text="Nazwisko:" />
                 <Input value="{clientsModel>/newClient/surname}" valueLiveUpdate="true" maxLength="30" liveChange="onValueChange" />
-                <Label text="{i18n>city}:" />
+                <Label text="Miejscowość:" />
                 <Input value="{clientsModel>/newClient/city}" valueLiveUpdate="true" maxLength="30" liveChange="onValueChange" />
-                <Label text="{i18n>street}:" />
+                <Label text="Ulica:" />
                 <Input value="{clientsModel>/newClient/street}" valueLiveUpdate="true" maxLength="30" liveChange="onValueChange" />
-                <Label text="{i18n>houseNumber}:" />
+                <Label text="Numer domu:" />
                 <Input value="{clientsModel>/newClient/houseNumber}" valueLiveUpdate="true" maxLength="10" liveChange="onValueChange" />
-                <Label text="{i18n>postalCode}:" />
+                <Label text="Kod pocztowy:" />
                 <Input value="{clientsModel>/newClient/postalCode}" valueLiveUpdate="true" maxLength="6" liveChange="onValueChange" />
             </VBox>
         </content>
         <buttons>
-            <Button text="{i18n>add}" type="Emphasized" visible="{= ${clientsModel>/newClient/isEditMode} ? false : true }" enabled="{clientsModel>/newClient/isCreateEnabled}" press="onCreateClient" />
-            <Button text="{i18n>update}" type="Emphasized" visible="{= ${clientsModel>/newClient/isEditMode} ? true : false }" enabled="{clientsModel>/newClient/isCreateEnabled}" press="onUpdateClient" />
-            <Button text="{i18n>close}" press="onCloseDialog" />
+            <Button text="Dodaj" type="Emphasized" visible="{= ${clientsModel>/newClient/isEditMode} ? false : true }" enabled="{clientsModel>/newClient/isCreateEnabled}" press="onCreateClient" />
+            <Button text="Zaktualizuj" type="Emphasized" visible="{= ${clientsModel>/newClient/isEditMode} ? true : false }" enabled="{clientsModel>/newClient/isCreateEnabled}" press="onUpdateClient" />
+            <Button text="Zamknij" press="onCloseDialog" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>
