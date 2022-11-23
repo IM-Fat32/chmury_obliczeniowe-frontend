@@ -38,7 +38,7 @@
         <buttons>
             <Button text="Dodaj" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? false : true }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onCreateService" />
             <Button text="Zaktualizuj" type="Emphasized" visible="{= ${servicesModel>/newService/isEditMode} ? true : false }" enabled="{servicesModel>/newService/isCreateEnabled}" press="onUpdateService" />
-            <Button text="{i18n>close}" press="onCloseDialog" />
+            <Button text="Zamknij" press="onCloseDialog" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

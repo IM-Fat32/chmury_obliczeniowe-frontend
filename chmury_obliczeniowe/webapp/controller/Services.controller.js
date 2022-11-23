@@ -99,7 +99,7 @@ sap.ui.define([
 
                 DevicesSH.getSHData(this);
 
-                oServicesDialog.setTitle(this.getI18nText("editService"));
+                oServicesDialog.setTitle("Edytowanie danych zgłoszenia");
                 CustomProperties.addCustomProperties(this, [{ name: "createServiceDialog", value: oServicesDialog }], false);
                 oServiceDataModel.setProperty("/newService", {
                     isCreateEnabled: true,
