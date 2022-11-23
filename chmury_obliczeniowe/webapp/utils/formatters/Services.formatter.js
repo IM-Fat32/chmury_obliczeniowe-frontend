@@ -19,7 +19,7 @@ sap.ui.define([], function () {
             if (sStatus === "N")
                 return "Nieodebrane";
 
-            return this.getI18nText("pickupStatusNone");
+            return "Brak";
         },
 
         formatServiceStatus: function (sStatus) {
