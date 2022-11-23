@@ -178,6 +178,11 @@ sap.ui.define([
                             aServicesData.push(oDocumentData);
                         }
 
+                        if (aServicesData.length === 0) {
+                            BusyDialog.close(this);
+                            return;
+                        }
+
                         const oFirestore = this.getOwnerComponent().getModel("firebase").getData().firestore;
                         const oDevicesCollection = oFirestore.collection("devices");
                         oDevicesCollection.get().then(
