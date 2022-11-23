@@ -94,5 +94,11 @@ sap.ui.define([
                     password: oLoginViewModel.getProperty("/userPassword"),
                 };
             },
+
+            _setLoggedUserData: function (oUserData) {
+                const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
+                oAuthModel.setProperty("/loggedUserData", oUserData);
+                oAuthModel.setProperty("/isUserAuth", true);
+            },
         });
     });

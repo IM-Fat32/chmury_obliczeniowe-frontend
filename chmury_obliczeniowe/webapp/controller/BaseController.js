@@ -70,7 +70,7 @@ sap.ui.define([
             onLogout: function () {
                 BusyDialog.open(this, "Wylogowywanie..");
                 firebase.auth().signOut().then(() => {
-                    this._setLoggedUserData();
+                    this._setLogoutUserData();
                     BusyDialog.close(this);
                     this.getOwnerComponent().getRouter().navTo("Login");
                 }).catch((oError) => {
@@ -79,7 +79,7 @@ sap.ui.define([
                 });
             },
 
-            _setLoggedUserData: function () {
+            _setLogoutUserData: function () {
                 const oAuthModel = this.getOwnerComponent().getModel(NAMES.getModels().authModel);
                 oAuthModel.setProperty("/loggedUserData", null);
                 oAuthModel.setProperty("/isUserAuth", false);

@@ -37,5 +37,6 @@ sap.ui.define([
                 if (!oAuthModel.getProperty("/isUserAuth"))
                     this.getOwnerComponent().getRouter().navTo("Login");
             },
+
         });
     });
